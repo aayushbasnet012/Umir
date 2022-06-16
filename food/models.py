@@ -1,3 +1,4 @@
+from distutils.command.upload import upload
 from uuid import UUID
 from django.db import models
 import uuid
@@ -12,8 +13,7 @@ class MenuCategory(models.Model):
 
 
 class Table(models.Model):
-    GUID = models.UUIDField(
-        primary_key=True, default=uuid.uuid4, editable=False)
+    
     table_number = models.CharField(max_length=2)
     is_occupied = models.BinaryField(default=0)
 
@@ -34,7 +34,7 @@ class MenuItems(models.Model):
     item_name = models.CharField(
         max_length=255, blank=False, default="Not Posted")
     item_price = models.SmallIntegerField()
-    item_image = models.ImageField()
+    item_image = models.ImageField(upload_to="food")
     item_category = models.ForeignKey(
         MenuCategory, on_delete=models.SET_NULL, default=models.SET_NULL, related_name="items", null=True)
     old_price = models.SmallIntegerField()

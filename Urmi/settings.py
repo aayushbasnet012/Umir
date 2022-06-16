@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,7 +26,7 @@ SECRET_KEY = 'django-insecure-oj23yf7ybs6fcu82(b_zt&t0!@4nf0m9fngdc925jr=&orgf*v
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.1.94','127.0.0.1','0.0.0.0']
 
 
 # Application definition
@@ -37,10 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "rest_framework",
     "debug_toolbar",
     "custom_authentication",
     "customer",
     "food",
+    "playground"
 ]
 
 MIDDLEWARE = [
@@ -85,6 +88,11 @@ DATABASES = {
     }
 }
 
+INTERNAL_IPS = [
+    # ...
+    "127.0.0.1",
+    # ...
+]
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -119,8 +127,17 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
+STATIC_DIR = os.path.join(BASE_DIR,'static')
+STATIC_URL = '/static/'
+MEDIA_DIR = os.path.join(BASE_DIR,'static_images')
+# STATICFILES_DIRS = [
+#     BASE_DIR / "static_images",
+#     '/home/aayush/Soft/Urmi/',
+# ]
+# STATICFILES_DIRS =[STATIC_DIR]
 
-STATIC_URL = 'static/'
+MEDIA_ROOT = MEDIA_DIR
+MEDIA_URL = '/static_images/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
