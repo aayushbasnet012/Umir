@@ -1,7 +1,6 @@
 from distutils.command.upload import upload
-from uuid import UUID
+from uuid import UUID, uuid4
 from django.db import models
-import uuid
 
 
 # Create your models here.
@@ -13,9 +12,12 @@ class MenuCategory(models.Model):
 
 
 class Table(models.Model):
-    
+    GUID = models.UUIDField(primary_key=True, default=uuid4)
     table_number = models.CharField(max_length=2)
     is_occupied = models.BinaryField(default=0)
+
+    def __str__(self):
+        return self.GUID
 
 
 class MenuItems(models.Model):
@@ -41,6 +43,8 @@ class MenuItems(models.Model):
     quantity_type = models.CharField(
         max_length=255, choices=mesurment_unit, default="Plate")
 
+    def __ (self):
+        return self.id
 
 class Orders(models.Model):
     stage_ordered = 'Ordered'

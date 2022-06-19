@@ -1,3 +1,4 @@
+from urllib import request
 from django.shortcuts import render
 from rest_framework.viewsets import ModelViewSet
 
@@ -13,3 +14,8 @@ class MenuCategoryViewSet(ModelViewSet):
 class MenuItemsViewSet(ModelViewSet):
     queryset = MenuItems.objects.all().select_related()
     serializer_class = MenuItemSerializer
+
+
+
+def lobby(request):
+    return render(request, 'food/lobby.html')

@@ -11,6 +11,8 @@ install = "*"
 pillow = "*"
 uuid = "*"
 drf-nested-routers = "*"
+channels = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 

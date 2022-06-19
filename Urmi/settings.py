@@ -39,14 +39,25 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "rest_framework",
+    "corsheaders",
     "debug_toolbar",
+    "channels", #for web socket
     "custom_authentication",
     "customer",
     "food",
     "playground"
 ]
 
+ASGI_APPLICATION  = 'Urmi.asgi.application'
+
+CHANNEL_LAYERS={
+    'default':{
+        'BACKEND':'channels.layers.InMemoryChannelLayer'
+    }
+}
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+
     "debug_toolbar.middleware.DebugToolbarMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -58,6 +69,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'Urmi.urls'
+CORS_ORIGIN_ALLOW_ALL = True
+
 
 TEMPLATES = [
     {
