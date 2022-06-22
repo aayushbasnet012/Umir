@@ -1,4 +1,5 @@
-from food.models import MenuCategory, MenuItems
+from email.policy import default
+from food.models import MenuCategory, MenuItems, Table
 from rest_framework import serializers
 
 #create a different serializer for put request
@@ -13,3 +14,8 @@ class MenuCategorySerializer(serializers.ModelSerializer):
         model = MenuCategory
         fields = ['id','category_name', 'category_image','items']
 
+class TableSerializers(serializers.ModelSerializer):
+    GUID = serializers.UUIDField(read_only=True)
+    class Meta:
+        model = Table
+        fields = ['GUID','table_number','is_occupied']

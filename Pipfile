@@ -13,6 +13,11 @@ uuid = "*"
 drf-nested-routers = "*"
 channels = "*"
 django-cors-headers = "*"
+django-filter = "*"
+redis = "*"
+django-redis = "*"
+whitenoise = "*"
+gunicorn = "*"
 
 [dev-packages]
 

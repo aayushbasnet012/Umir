@@ -32,18 +32,22 @@ class OrderConsumer(WebsocketConsumer):
         )
         order.save()
 
-        # async_to_sync(self.channel_layer.group_send)(
-        #     self.room_group_name,
-        #     {
-        #         'type':'chat_message',   
-                    
-        #     }
-        # )
+    #     async_to_sync(self.channel_layer.group_send)(
+    #         self.room_group_name,
+    #         {
+    #             'table_id':Table.objects.get(GUID=text_data_json['table_id']),
+    #             'quantity':text_data_json['quantity'],
+    #             'order_state':"ordered"
+    #         }
+    #     )
 
     # def chat_message(self, event):
     #     message = event['message']
+    #     text_data_json = json.loads(event)
 
     #     self.send(text_data=json.dumps({
-    #         'type':'chat',
-    #         'message':message
+    #         'table_id':Table.objects.get(GUID=text_data_json['table_id']),
+    #         'quantity':text_data_json['quantity'],
+    #         'order_state':"ordered"
     #     }))
+        

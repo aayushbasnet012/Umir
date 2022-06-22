@@ -1,4 +1,3 @@
-from distutils.command.upload import upload
 from uuid import UUID, uuid4
 from django.db import models
 
@@ -14,10 +13,10 @@ class MenuCategory(models.Model):
 class Table(models.Model):
     GUID = models.UUIDField(primary_key=True, default=uuid4)
     table_number = models.CharField(max_length=2)
-    is_occupied = models.BinaryField(default=0)
+    is_occupied = models.BooleanField(default=0, blank=False)
 
-    def __str__(self):
-        return self.GUID
+    # def __id__(self):
+    #     return self.GUID
 
 
 class MenuItems(models.Model):
@@ -43,7 +42,7 @@ class MenuItems(models.Model):
     quantity_type = models.CharField(
         max_length=255, choices=mesurment_unit, default="Plate")
 
-    def __ (self):
+    def __srt__ (self):
         return self.id
 
 class Orders(models.Model):
