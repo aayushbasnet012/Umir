@@ -4,4 +4,11 @@ import os
 SECRET_KEY = os.environ['SECRET_KEY']
 DEBUG =False
 
-ALLOWED_HOSTS = ['192.168.1.94','127.0.0.1','0.0.0.0']
+ALLOWED_HOSTS = ['urmi-prod.herokuapp.com']
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR  / 'db.sqlite3',
+    }
+}
