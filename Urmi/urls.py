@@ -21,10 +21,13 @@ import debug_toolbar
 
 from django.conf.urls.static import static
 
+from food import views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('playground/', include('playground.urls')),
     path('__debug__/', include('debug_toolbar.urls')),
     path('food/',include("food.urls")),
+    path('chat/', views.lobby)
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

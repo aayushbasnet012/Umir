@@ -15,6 +15,8 @@ from channels.routing import ProtocolTypeRouter, URLRouter
 from channels.auth import AuthMiddlewareStack
 import food.routing
 
+from food.views import lobby
+
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Urmi.settings.dev')
 
 application = ProtocolTypeRouter({
